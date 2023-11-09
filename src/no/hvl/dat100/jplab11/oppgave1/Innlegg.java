@@ -3,14 +3,15 @@ package no.hvl.dat100.jplab11.oppgave1;
 import no.hvl.dat100.jplab11.common.TODO;
 
 public abstract class Innlegg {
-	
-	int id;
 
-	String bruker;
+	// De fire objektvariable skal ikke være synlige utenfor klassen. (setter private nøkkelord)
+	private int id;
 
-	String dato;
+	private String bruker;
 
-	int likes;
+	private String dato;
+
+	private int likes;
 	
 	public Innlegg() {
 		
@@ -21,6 +22,7 @@ public abstract class Innlegg {
 		this.id = id;
 		this.bruker = bruker;
 		this.dato = dato;
+		likes = 0; // Konstruktøren som bare tar tre parametre skal sette likes lik 0.
 
 	}
 
@@ -54,9 +56,18 @@ public abstract class Innlegg {
 	public int getLikes() {
 		return likes;
 	}
+
+	/*
+	Lager egen setLikes for morro, selv om den kommer mest sannynlig til å bare brukes i doLike() metoden.
+	Men det er også nyttig for å generalisere koden, som gjør den mer vedlikeholdbar og ekspansiv.
+	I tillegg er et best å la en metode fokusere på kun en ting, det gjør koden mer lesbar.
+	*/
+	public void setLikes(int likes) {
+		this.likes = likes;
+	}
 	
 	public void doLike () {
-		likes = 1 + getLikes();
+		setLikes(getLikes() + 1);
 	}
 	
 	public boolean erLik(Innlegg innlegg) {
@@ -65,7 +76,10 @@ public abstract class Innlegg {
 	
 	@Override
 	public String toString() {
-		return getId() + "\n" + getBruker() + '\n' + getDato() + '\n' + getLikes() + '\n';
+		return  getId()     + "\n" + // '\n' ble lest som tallet 1 av testkoden, i c++ er '\n' mest vanlig å bruke, kansje ikke i Java
+				getBruker() + '\n' +
+				getDato()   + '\n' +
+				getLikes()  + '\n';
 	}
 	
 	// Metoden nedenfor er kun for valgfri oppgave 6

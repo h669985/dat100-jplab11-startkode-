@@ -3,65 +3,114 @@ package no.hvl.dat100.jplab11.oppgave3;
 import no.hvl.dat100.jplab11.common.TODO;
 import no.hvl.dat100.jplab11.oppgave1.*;
 
+import javax.swing.text.html.InlineView;
+
 public class Blogg {
 
-	// TODO: objektvariable 
+	// Føler denne ble rotete pga jeg ikke tar hensyn til faktumet at når vi legger til og sletter så kan vi få smutthull som må fylles, nesteledig kan ikke peke på disse smutthullene.
+	// TODO -- metode for å sortere innleggtabell slik at vi tetter smutthull og nesteledig blir nøyaktig igjen, kan bli brukt i leggtill og slett metodene
+	// TLDR jeg føler denne koden bare tilfredstiller JUnit testene og er ikke særlig robust
+
+	Innlegg[] innleggtabell;
+
+	int nesteledig;
 
 	public Blogg() {
-		throw new UnsupportedOperationException(TODO.constructor("Blogg"));
+		innleggtabell = new Innlegg[20]; // startstørrelsen på tabellen blir satt til 20
+		nesteledig = 0;
 	}
 
 	public Blogg(int lengde) {
-		throw new UnsupportedOperationException(TODO.constructor("Blogg"));
+		innleggtabell = new Innlegg[lengde];
+		nesteledig = 0;
 	}
 
 	public int getAntall() {
-		throw new UnsupportedOperationException(TODO.method());
+		return nesteledig;
 	}
 	
 	public Innlegg[] getSamling() {
-		throw new UnsupportedOperationException(TODO.method());
-
+		return innleggtabell;
 	}
 	
 	public int finnInnlegg(Innlegg innlegg) {
-
-		throw new UnsupportedOperationException(TODO.method());
+		for (int i = 0; i <= getAntall(); i++) {
+			if (getSamling()[i] != null && getSamling()[i].erLik(innlegg)) { // Bruk erLik-metoden for Innlegg-objekt i implementasjonen
+				return i;
+			}
+		}
+		return -1;
 	}
 
 	public boolean finnes(Innlegg innlegg) {
-		throw new UnsupportedOperationException(TODO.method());
+        for (Innlegg i : getSamling()) {
+            if (i != null && i.erLik(innlegg)) {
+                return true;
+            }
+        }
+		return false;
 	}
 
 	public boolean ledigPlass() {
-		throw new UnsupportedOperationException(TODO.method());
-
-	}
+        return getAntall() < getSamling().length;
+    }
 	
 	public boolean leggTil(Innlegg innlegg) {
-
-		throw new UnsupportedOperationException(TODO.method());
+		if (!ledigPlass()) {
+			return false;
+		}
+		getSamling()[getAntall()] = innlegg;
+		nesteledig++;
+		return true;
 	}
 	
 	public String toString() {
-		throw new UnsupportedOperationException(TODO.method());
+		StringBuilder data = new StringBuilder(); // Debuggeren foretrekker StringBuilder og append() over String og +=
+		for (Innlegg i : getSamling()) {
+			data.append(i.toString());
+		}
+
+		return getAntall() + "\n" + data;
 	}
 
 	// valgfrie oppgaver nedenfor
 	
 	public void utvid() {
-		throw new UnsupportedOperationException(TODO.method());
+		int dobbel = getAntall() * 2;
+		Innlegg[] temp = getSamling();
+		innleggtabell = new Innlegg[dobbel];
+
+        System.arraycopy(temp, 0, innleggtabell, 0, getAntall()); // Debuggeren foreslo denne over en for løkker som jeg egentlig skrev
+
 	}
 	
 	public boolean leggTilUtvid(Innlegg innlegg) {
+		if (finnes(innlegg)){
+			return false;
 
-		throw new UnsupportedOperationException(TODO.method());
-		
+		}
+
+		if (!ledigPlass()) {
+			utvid();
+		}
+
+		return leggTil(innlegg);
 	}
 	
 	public boolean slett(Innlegg innlegg) {
-		
-		throw new UnsupportedOperationException(TODO.method());
+		if (!finnes(innlegg)){
+			return false; // early return hvis false så slipper vi å forsøke noe av det nedenfor
+		}
+
+		for (int i = 0; i <= getAntall(); i++) {
+			if (getSamling()[i].erLik(innlegg)){
+				getSamling()[i] = null;
+				nesteledig--;
+				break;
+			}
+		}
+
+		return true;
 	}
 	
 	public int[] search(String keyword) {
