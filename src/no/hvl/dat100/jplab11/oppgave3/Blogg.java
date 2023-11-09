@@ -7,8 +7,8 @@ import javax.swing.text.html.InlineView;
 
 public class Blogg {
 
-	// Føler denne ble rotete pga jeg ikke tar hensyn til faktumet at når vi legger til og sletter så kan vi få smutthull som må fylles, nesteledig kan ikke peke på disse smutthullene.
-	// TODO -- metode for å sortere innleggtabell slik at vi tetter smutthull og nesteledig blir nøyaktig igjen, kan bli brukt i leggtill og slett metodene
+	// Føler denne ble rotete pga jeg ikke tar hensyn til faktumet at når vi sletter så kan vi få smutthull som må fylles, nesteledig kan ikke peke på disse smutthullene.
+	// leggtill tetter smutthull nå, men slett() burde kansje også gjøre noe for å forhindre hull
 	// TLDR jeg føler denne koden bare tilfredstiller JUnit testene og er ikke særlig robust
 
 	Innlegg[] innleggtabell;
@@ -59,7 +59,12 @@ public class Blogg {
 		if (!ledigPlass()) {
 			return false;
 		}
-		getSamling()[getAntall()] = innlegg;
+		for (int i = 0; i <= getAntall(); i++ ){
+			if(getSamling()[i] == null) {
+				getSamling()[i] = innlegg;
+				break;
+			}
+		}
 		nesteledig++;
 		return true;
 	}
@@ -109,6 +114,8 @@ public class Blogg {
 				break;
 			}
 		}
+
+		// TODO -- tett igjen smutthull
 
 		return true;
 	}
