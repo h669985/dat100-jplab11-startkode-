@@ -74,7 +74,7 @@ public abstract class Innlegg {
 		return getId() == innlegg.getId();
 	}
 	
-	@Override
+
 	public String toString() {
 		return  getId()     + "\n" + // '\n' ble lest som tallet 1 av testkoden, i c++ er '\n' mest vanlig å bruke, kansje ikke i Java
 				getBruker() + '\n' +
@@ -84,8 +84,7 @@ public abstract class Innlegg {
 	
 	// Metoden nedenfor er kun for valgfri oppgave 6
 	public String toHTML() {
-		
-		throw new UnsupportedOperationException(TODO.method());
-				
+		return "\t\t<h2>" + getBruker() + '@' + getDato() + " [" + getLikes() + "]</h2>\n" +
+				"\t\t<hr>\n";
 	}
 }

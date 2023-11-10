@@ -1,6 +1,7 @@
 package no.hvl.dat100.jplab11.oppgave2;
 
 import no.hvl.dat100.jplab11.common.TODO;
+import no.hvl.dat100.jplab11.oppgave1.Innlegg;
 
 public class Bilde extends Tekst {
 
@@ -37,8 +38,8 @@ public class Bilde extends Tekst {
 
 	// Metoden nedenfor er kun for valgfri oppgave 6
 	public String toHTML() {
-		
-		throw new UnsupportedOperationException(TODO.method());
-				
+		return  "\t\t<h2>" + getBruker() + '@' + getDato() + " [" + getLikes() + "]</h2>\n" +
+				"\t\t<p>" + getTekst() + "<p>\n" +
+				"\t\t<iframe src=\"" + getUrl() + "\" height=600 width=8></iframe><hr>\n";
 	}
 }
