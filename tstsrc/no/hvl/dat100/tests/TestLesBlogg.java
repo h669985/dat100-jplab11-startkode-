@@ -10,7 +10,7 @@ import no.hvl.dat100.jplab11.oppgave5.LesBlogg;
 
 public class TestLesBlogg {
 
-	private static String MAPPE = System.getProperty("user.dir") + "/src/no/hvl/dat100/tests/";
+	private static String MAPPE = System.getProperty("user.dir") + "/tstsrc/no/hvl/dat100/tests/";
 
 	private static String FILNAVN = "bloggkorrekt.dat";
 	
