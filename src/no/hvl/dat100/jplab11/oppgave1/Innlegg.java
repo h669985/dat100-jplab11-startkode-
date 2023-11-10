@@ -1,7 +1,5 @@
 package no.hvl.dat100.jplab11.oppgave1;
 
-import no.hvl.dat100.jplab11.common.TODO;
-
 public abstract class Innlegg {
 
 	// De fire objektvariable skal ikke være synlige utenfor klassen. (setter private nøkkelord)
@@ -12,10 +10,6 @@ public abstract class Innlegg {
 	private String dato;
 
 	private int likes;
-	
-	public Innlegg() {
-		
-	}
 	
 	public Innlegg(int id, String bruker, String dato) {
 

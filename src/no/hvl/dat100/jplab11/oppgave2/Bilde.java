@@ -1,8 +1,5 @@
 package no.hvl.dat100.jplab11.oppgave2;
 
-import no.hvl.dat100.jplab11.common.TODO;
-import no.hvl.dat100.jplab11.oppgave1.Innlegg;
-
 public class Bilde extends Tekst {
 
 	private String url;

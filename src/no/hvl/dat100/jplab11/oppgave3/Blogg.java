@@ -3,8 +3,6 @@ package no.hvl.dat100.jplab11.oppgave3;
 import no.hvl.dat100.jplab11.common.TODO;
 import no.hvl.dat100.jplab11.oppgave1.*;
 
-import javax.swing.text.html.InlineView;
-
 public class Blogg {
 
 	// Føler denne ble rotete pga jeg ikke tar hensyn til faktumet at når vi sletter så kan vi få smutthull som må fylles, nesteledig kan ikke peke på disse smutthullene.
@@ -93,7 +91,6 @@ public class Blogg {
 	public boolean leggTilUtvid(Innlegg innlegg) {
 		if (finnes(innlegg)){
 			return false;
-
 		}
 
 		if (!ledigPlass()) {
@@ -116,7 +113,7 @@ public class Blogg {
 			}
 		}
 
-		// TODO -- tett igjen smutthull
+		// TODO -- tette igjen smutthull? (ehh funker greit nok å bruke 'Type var != null' der det er relevant)
 
 		return true;
 	}

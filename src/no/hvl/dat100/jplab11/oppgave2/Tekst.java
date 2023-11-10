@@ -1,14 +1,10 @@
 package no.hvl.dat100.jplab11.oppgave2;
 
-import no.hvl.dat100.jplab11.common.TODO;
 import no.hvl.dat100.jplab11.oppgave1.*;
 
 public class Tekst extends Innlegg {
 
 	private String tekst;
-	
-	public Tekst () {
-	}
 	
 	public Tekst(int id, String bruker, String dato, String tekst) {
 		super(id, bruker, dato);
