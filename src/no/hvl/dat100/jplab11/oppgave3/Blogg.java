@@ -72,7 +72,8 @@ public class Blogg {
 	public String toString() {
 		StringBuilder data = new StringBuilder(); // Debuggeren foretrekker StringBuilder og append() over String og +=
 		for (Innlegg i : getSamling()) {
-			data.append(i.toString());
+			if (i != null)
+				data.append(i);
 		}
 
 		return getAntall() + "\n" + data;
