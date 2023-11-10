@@ -40,6 +40,6 @@ public class Bilde extends Tekst {
 	public String toHTML() {
 		return  "\t\t<h2>" + getBruker() + '@' + getDato() + " [" + getLikes() + "]</h2>\n" +
 				"\t\t<p>" + getTekst() + "<p>\n" +
-				"\t\t<iframe src=\"" + getUrl() + "\" height=600 width=8></iframe><hr>\n";
+				"\t\t<iframe src=\"" + getUrl() + "\" height=600 width=800></iframe><hr>\n";
 	}
 }
