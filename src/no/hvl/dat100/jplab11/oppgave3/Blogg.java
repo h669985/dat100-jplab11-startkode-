@@ -1,6 +1,5 @@
 package no.hvl.dat100.jplab11.oppgave3;
 
-import no.hvl.dat100.jplab11.common.TODO;
 import no.hvl.dat100.jplab11.oppgave1.*;
 
 public class Blogg {
@@ -119,8 +118,22 @@ public class Blogg {
 	}
 	
 	public int[] search(String keyword) {
-		
-		throw new UnsupportedOperationException(TODO.method());
+		// Forhåndsdeklarasjoner
+		int[] muligetreff = new int[getAntall()];
+		int antalltreff = 0;
 
+		// Sjekker gjennom hele samlingen for keyword og kopierer Id-en inn i muligetreff hvis keyword ble funnet
+		for (Innlegg innlegg : getSamling()) {
+			if (innlegg.toString().contains(keyword)) {
+				muligetreff[antalltreff] += innlegg.getId();
+				antalltreff++;
+			}
+		}
+
+		// Lager ny array på korrekt størrelse og kopierer inn i samme rekkefølge
+		int[] resultat = new int[antalltreff];
+        System.arraycopy(muligetreff, 0, resultat, 0, antalltreff); // System.arraycopy istedenfor for-loop
+
+		return resultat;
 	}
 }
