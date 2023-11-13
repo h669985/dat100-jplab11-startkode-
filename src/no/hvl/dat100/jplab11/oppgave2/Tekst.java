@@ -26,18 +26,16 @@ public class Tekst extends Innlegg {
 
 	@Override
 	public String toString() {
-		return  "TEKST"     + '\n' +
-				getId()     + '\n' +
-				getBruker() + '\n' +
-				getDato()   + '\n' +
-				getLikes()  + '\n' +
-				getTekst()  + '\n';
+		return  "TEKST"     	 + '\n' +
+				super.toString() +
+				getTekst()       + '\n';
 	}
 	
 	// Metoden nedenfor er kun for valgfri oppgave 6
 	public String toHTML() {
-		return  "\t\t<h2>" + getBruker() + '@' + getDato() + " [" + getLikes() + "]</h2>\n" +
+		return super.toHTML().replace(
+				     "\t\t<hr>\n",
 				"\t\t<p>" + getTekst() + "<p>\n" +
-				"\t\t<hr>\n";
+						    "\t\t<hr>\n");
 	}
 }

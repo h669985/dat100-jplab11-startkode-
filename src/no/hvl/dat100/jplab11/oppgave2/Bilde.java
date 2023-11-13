@@ -24,19 +24,16 @@ public class Bilde extends Tekst {
 
 	@Override
 	public String toString() {
-		return  "BILDE"     + '\n' +
-				getId()     + '\n' +
-				getBruker() + '\n' +
-				getDato()   + '\n' +
-				getLikes()  + '\n' +
-				getTekst()  + '\n' +
-				getUrl()    + '\n';
+		return super.toString().replace(
+						  "TEKST",
+					 "BILDE") +
+				            	 getUrl() + '\n';
 	}
 
 	// Metoden nedenfor er kun for valgfri oppgave 6
 	public String toHTML() {
-		return  "\t\t<h2>" + getBruker() + '@' + getDato() + " [" + getLikes() + "]</h2>\n" +
-				"\t\t<p>" + getTekst() + "<p>\n" +
-				"\t\t<iframe src=\"" + getUrl() + "\" height=600 width=800></iframe><hr>\n";
+		return super.toHTML().replace(
+				     "\t\t<hr>\n",
+				"\t\t<iframe src=\"" + getUrl() + "\" height=600 width=800></iframe><hr>\n");
 	}
 }

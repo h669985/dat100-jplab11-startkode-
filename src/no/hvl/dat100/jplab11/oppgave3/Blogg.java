@@ -67,7 +67,7 @@ public class Blogg {
 	}
 	
 	public String toString() {
-		StringBuilder data = new StringBuilder(); // Debuggeren foretrekker StringBuilder og append() over String og +=
+		StringBuilder data = new StringBuilder(); // Debuggeren foretrekker StringBuilder og append() over String og += (String connotation)
 		for (Innlegg i : getSamling()) {
 			if (i != null)
 				data.append(i);
@@ -100,7 +100,7 @@ public class Blogg {
 	}
 	
 	public boolean slett(Innlegg innlegg) {
-		if (!finnes(innlegg)){
+		if (!finnes(innlegg)) {
 			return false; // early return hvis false så slipper vi å forsøke noe av det nedenfor
 		}
 
