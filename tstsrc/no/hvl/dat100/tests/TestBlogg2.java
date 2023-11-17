@@ -1,12 +1,12 @@
 package no.hvl.dat100.tests;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import no.hvl.dat100.jplab11.oppgave2.Bilde;
 import no.hvl.dat100.jplab11.oppgave2.Tekst;
-import org.junit.jupiter.api.Test;
-
 import no.hvl.dat100.jplab11.oppgave3.*;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 // Har laget egne tester for morroskyld og for å kunne være mer sikker på at metodene er korrekte
 public class TestBlogg2 {

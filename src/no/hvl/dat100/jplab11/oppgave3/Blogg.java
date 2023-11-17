@@ -1,12 +1,7 @@
 package no.hvl.dat100.jplab11.oppgave3;
-
 import no.hvl.dat100.jplab11.oppgave1.*;
 
 public class Blogg {
-
-	// Føler denne ble rotete pga jeg ikke tar hensyn til faktumet at når vi sletter så kan vi få smutthull som må fylles, nesteledig kan ikke peke på disse smutthullene.
-	// leggtill tetter smutthull nå, men slett() burde kansje også gjøre noe for å forhindre hull
-	// TLDR jeg føler denne koden bare tilfredstiller JUnit testene og er ikke særlig robust
 
 	Innlegg[] innleggtabell;
 
@@ -56,12 +51,11 @@ public class Blogg {
 		if (!ledigPlass()) {
 			return false;
 		}
-		for (int i = 0; i <= getAntall(); i++ ){
-			if(getSamling()[i] == null) {
-				getSamling()[i] = innlegg;
-				break;
-			}
-		}
+
+		getSamling()[nesteledig] = innlegg;
+
+		// sorter(InnleggCompareType.ID, getSamling(), null); //Antar at ID på innlegget er rekkefølgen innleggene ble laget på og dermed sorter etter stigende ID
+
 		nesteledig++;
 		return true;
 	}
@@ -70,7 +64,7 @@ public class Blogg {
 		StringBuilder data = new StringBuilder(); // Debuggeren foretrekker StringBuilder og append() over String og += (String connotation)
 		for (Innlegg i : getSamling()) {
 			if (i != null)
-				data.append(i);
+				data.append(i.toString()); // Usikker på om append() konverterer til Streng på samme måte som toString() gjør, beholder metodekallet for vedlikeholdbarhet
 		}
 
 		return getAntall() + "\n" + data;
@@ -112,7 +106,7 @@ public class Blogg {
 			}
 		}
 
-		// TODO -- tette igjen smutthull? (ehh funker greit nok å bruke 'Type var != null' der det er relevant)
+		// squish(getSamling()); // Når vi sletter kan vi skape tomrom så squish(Innlegg[] samling) flytter alle null innlegg bakerst, ikke så effektivt da...
 
 		return true;
 	}

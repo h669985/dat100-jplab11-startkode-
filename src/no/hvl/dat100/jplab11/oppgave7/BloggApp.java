@@ -8,18 +8,20 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
 
+import no.hvl.dat100.jplab11.ekstra.BloggUtils;
+import no.hvl.dat100.jplab11.ekstra.InnleggCompareType;
+import no.hvl.dat100.jplab11.oppgave1.Innlegg;
 import no.hvl.dat100.jplab11.oppgave2.Bilde;
 import no.hvl.dat100.jplab11.oppgave2.Tekst;
-import no.hvl.dat100.jplab11.oppgave3.Blogg;
 import no.hvl.dat100.jplab11.oppgave6.HtmlBlogg;
 
 public class BloggApp {
 
 	public static String toHTML() {
 
-		Tekst innlegg1 = new Tekst(1, "Sven-Olai", "23-10",
+		Tekst innlegg2 = new Tekst(1, "Sven-Olai", "23-10-2022",
 				"Lars, hva er status for den siste obligatoriske innleveringen?");
-		Bilde innlegg2 = new Bilde(2, "Lars", "24-10",
+		Bilde innlegg1 = new Bilde(2, "Lars", "24-10-2022",
 				"Ser bra ut! - har lagt ved output-eksempel fra enhetstester",
 				"https://home.hvl.no/ansatte/lmkr/dat100/junitscreenshot.png");
 
@@ -31,6 +33,11 @@ public class BloggApp {
 
 		samling.leggTil(innlegg1);
 		samling.leggTil(innlegg2);
+
+		// Tester datosortering, sorteres etter nyeste
+		Innlegg[] innleggsamling = samling.getSamling();
+
+		BloggUtils.sorter(InnleggCompareType.DATO, innleggsamling, "dd-MM-yyyy");
 
 		return samling.toString();
 	}
