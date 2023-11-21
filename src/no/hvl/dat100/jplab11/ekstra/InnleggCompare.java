@@ -1,6 +1,5 @@
 package no.hvl.dat100.jplab11.ekstra;
 
-import no.hvl.dat100.jplab11.common.TODO;
 import no.hvl.dat100.jplab11.oppgave1.Innlegg;
 
 import java.time.LocalDate;
@@ -11,6 +10,10 @@ public class InnleggCompare {
 
     public static int compareID(Innlegg innlegg1, Innlegg innlegg2) {
         return Integer.compare(innlegg1.getId(), innlegg2.getId());
+    }
+
+    public static int compareBruker(Innlegg innlegg1, Innlegg innlegg2) {
+        return CharSequence.compare(innlegg1.getBruker(), innlegg2.getBruker());
     }
 
     public static int compareDato(Innlegg innlegg1, Innlegg innlegg2, String format) {
@@ -29,8 +32,8 @@ public class InnleggCompare {
             case ID -> { // Stigende rekkefølge
                 return compareID(innlegg1, innlegg2);
             }
-            case BRUKER -> { // TODO -- Alfabetisk rekkefølge : Ingen planer om å implementer nå
-                throw new RuntimeException(TODO.method());
+            case BRUKER -> { // Alfabetisk rekkefølge
+                return compareBruker(innlegg1, innlegg2);
             }
             case DATO -> { // Nyeste dato først
                 return compareDato(innlegg1 ,innlegg2, tidsformat);
