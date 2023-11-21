@@ -1,77 +1,84 @@
 package no.hvl.dat100.jplab11.oppgave1;
 
-import no.hvl.dat100.jplab11.common.TODO;
-
 public abstract class Innlegg {
-	
-	// TODO - deklarering av objektvariable
-	
-	public Innlegg() {
-		
-	}
+
+	// De fire objektvariable skal ikke være synlige utenfor klassen. (setter private nøkkelord)
+	private int id;
+
+	private String bruker;
+
+	private String dato;
+
+	private int likes;
 	
 	public Innlegg(int id, String bruker, String dato) {
 
-		// TODO 
-		throw new UnsupportedOperationException(TODO.constructor("Innlegg"));
+		this.id = id;
+		this.bruker = bruker;
+		this.dato = dato;
+		likes = 0; // Konstruktøren som bare tar tre parametre skal sette likes lik 0.
+
 	}
 
 	public Innlegg(int id, String bruker, String dato, int likes) {
-
-		// TODO - START
-		
-		throw new UnsupportedOperationException(TODO.constructor("Innlegg"));
+		this.id = id;
+		this.bruker = bruker;
+		this.dato = dato;
+		this.likes = likes;
 	}
 	
 	public String getBruker() {
-		
-		throw new UnsupportedOperationException(TODO.method());
-
+		return bruker;
 	}
 
 	public void setBruker(String bruker) {
-		throw new UnsupportedOperationException(TODO.method());
+		this.bruker = bruker;
 	}
 
 	public String getDato() {
-		throw new UnsupportedOperationException(TODO.method());
-		
+		return dato;
 	}
 
 	public void setDato(String dato) {
-		throw new UnsupportedOperationException(TODO.method());
+		this.dato = dato;
 	}
 
 	public int getId() {
-		throw new UnsupportedOperationException(TODO.method());
-
+		return id;
 	}
 
 	public int getLikes() {
-		throw new UnsupportedOperationException(TODO.method());
+		return likes;
+	}
 
+	/*
+	Lager egen setLikes for morro, selv om den kommer mest sannynlig til å bare brukes i doLike() metoden.
+	Men det er også nyttig for å generalisere koden, som gjør den mer vedlikeholdbar og ekspansiv.
+	I tillegg er et best å la en metode fokusere på kun en ting, det gjør koden mer lesbar.
+	*/
+	public void setLikes(int likes) {
+		this.likes = likes;
 	}
 	
 	public void doLike () {
-		throw new UnsupportedOperationException(TODO.method());
+		setLikes(getLikes() + 1);
 	}
 	
 	public boolean erLik(Innlegg innlegg) {
-		throw new UnsupportedOperationException(TODO.method());
-
+		return getId() == innlegg.getId();
 	}
 	
-	@Override
+
 	public String toString() {
-		
-		throw new UnsupportedOperationException(TODO.method());
-				
+		return  getId()     + "\n" + // '\n' ble lest som tallet 1 av testkoden, i c++ er '\n' mest vanlig å bruke, kansje ikke i Java
+				getBruker() + '\n' +
+				getDato()   + '\n' +
+				getLikes()  + '\n';
 	}
 	
 	// Metoden nedenfor er kun for valgfri oppgave 6
 	public String toHTML() {
-		
-		throw new UnsupportedOperationException(TODO.method());
-				
+		return  "\t\t<h2>" + getBruker() + '@' + getDato() + " [" + getLikes() + "]</h2>\n" +
+				"\t\t<hr>\n";
 	}
 }
