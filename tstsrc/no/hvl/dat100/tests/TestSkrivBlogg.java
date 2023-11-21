@@ -13,7 +13,8 @@ import java.io.File;
 public class TestSkrivBlogg {
 
 	private static String FILNAVN = "blogg.dat";
-	private static String MAPPE = new File("tstsrc/no/hvl/dat100/tests/").getAbsolutePath() + File.separator;
+	private static String MAPPE = System.getProperty("user.dir") + "/tstsrc/no/hvl/dat100/tests/";
+
 
 	@Test
 	public void testskriv() {
